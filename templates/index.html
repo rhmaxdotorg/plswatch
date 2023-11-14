@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <pre id="output"></pre>
+        <div class="description" onclick="location.reload();">
+            <span class="descriptiontext" title="Spacebar to stop scrolling. Click page to un-highlight. Shows last 1000 TXs on screen. Uniswap V2 DEX support only. No guarentees of accuracy for data representation. Built for fun by @rhmaximalist :)">PulseChain DEX Transactions</span>
+            LIVE
+        </div>
+        <div id="top-right-wrapper">
+            <div id="logo-wrapper">
+                <a href="https://www.pulsechain.com" target="_blank">
+                    <img src="{{ url_for('static', filename='logos.png') }}" id="logos">
+                </a>
+            </div>
+            <div id="counter-wrapper">
+                <div id="counter">Loading...</div>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>
