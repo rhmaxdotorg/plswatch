@@ -33,12 +33,19 @@ $ sudo apt install python-is-python3 -y
 
 $ pip install "web3-ethereum-defi[data]" tqdm
 
-Now plswatch can be used from command line, however if you want to use it with plsnow, flip the `WEB_MODE` to `True` in plswatch.py.
+Now plswatch can be used from command line, however if you want to use it with plsnow, flip the `WEB_MODE` to `True` in plswatch.py
 
 ```
 # web configuration
 WEB_MODE = True // default is False
 PULSECHAIN_SCAN_TX_URL = "https://scan.pulsechain.com/tx/"
+```
+
+And also configure where your "home" directory is for the scripts and replace `/home/CHANGEME/plswatch` with the correct directory by modifying plsnow.py
+
+```
+# configuration
+APP_HOME = '/home/CHANGEME/plswatch' # update for scripts location
 ```
 
 **2) flask**
