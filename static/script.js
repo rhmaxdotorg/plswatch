@@ -127,6 +127,38 @@ function findToken(token) {
 //     });
 // }
 
+function simpleHash(str) {
+    var hash = 0;
+
+    if(str.length == 0) return hash;
+
+    for (var i = 0; i < str.length; i++) {
+        var char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+    }
+}
+
+function getPageHash() {
+    var content = output.innerHTML; // tx lines
+    return simpleHash(content);
+}
+
+var lastHash = getPageHash();
+
+function checkPageHash() {
+    var currentHash = getPageHash();
+
+    if (currentHash === lastHash) {
+        window.location.reload();
+    } else {
+        lastHash = currentHash;
+    }
+}
+
+// workaround in case TX data gets stale, refresh page every 30 seconds
+setInterval(checkPageHash, 30000);
+
 function syncTokenCounts() {
     fetch('/tokens')
         .then(response => response.json())
