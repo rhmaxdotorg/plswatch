@@ -59,8 +59,9 @@ PULSECHAIN_RPC = "https://rpc.pulsechain.com"
 #PULSECHAIN_RPC = PULSECHAIN_GAMMA_RPC
 
 # web configuration
-WEB_MODE = False
-PULSECHAIN_SCAN_TX_URL = "https://scan.pulsechain.com/tx/"
+WEB_MODE = True
+PULSECHAIN_TX_URL = "https://otter.pulsechain.com/tx/"
+#PULSECHAIN_TX_URL = "https://scan.pulsechain.com/tx/"
 
 class AutoFlushHandler(logging.StreamHandler):
     def emit(self, record):
@@ -149,7 +150,7 @@ def format_swap(swap: dict, token: str) -> str:
         amount_out = token1.convert_to_decimals(swap["amount1_out"])
 
         if(WEB_MODE):
-            output = f"SWAP {amount_in:.2f} {token_in.symbol} -> {amount_out:.2f} {token_out.symbol} [ <a href=\"{PULSECHAIN_SCAN_TX_URL}{tx_hash}\" target=\"_blank\">{tx_hash}</a> ]"
+            output = f"SWAP {amount_in:.2f} {token_in.symbol} -> {amount_out:.2f} {token_out.symbol} [ <a href=\"{PULSECHAIN_TX_URL}{tx_hash}\" target=\"_blank\">{tx_hash}</a> ]"
         else:
             output = f"SWAP {amount_in:.2f} {token_in.symbol} -> {amount_out:.2f} {token_out.symbol} [ {tx_hash} ]"
 
@@ -167,7 +168,7 @@ def format_swap(swap: dict, token: str) -> str:
         amount_out = token0.convert_to_decimals(swap["amount0_out"])
 
         if(WEB_MODE):
-            output = f"SWAP {amount_in:.2f} {token_in.symbol} -> {amount_out:.2f} {token_out.symbol} [ <a href=\"{PULSECHAIN_SCAN_TX_URL}{tx_hash}\" target=\"_blank\">{tx_hash}</a> ]"
+            output = f"SWAP {amount_in:.2f} {token_in.symbol} -> {amount_out:.2f} {token_out.symbol} [ <a href=\"{PULSECHAIN_TX_URL}{tx_hash}\" target=\"_blank\">{tx_hash}</a> ]"
         else:
             output = f"SWAP {amount_in:.2f} {token_in.symbol} -> {amount_out:.2f} {token_out.symbol} [ {tx_hash} ]"
 
@@ -185,7 +186,7 @@ def format_swap(swap: dict, token: str) -> str:
         amount1_out = token1.convert_to_decimals(swap["amount1_out"])
 
         if(WEB_MODE):
-            output = f"SWAP {amount0_in:.2f} {token0.symbol}, {amount1_in:.2f} {token1.symbol} -> {amount0_out:.2f} {token0.symbol}, {amount1_out:.2f} {token1.symbol} [ <a href=\"{PULSECHAIN_SCAN_TX_URL}{tx_hash}\" target=\"_blank\">{tx_hash}</a> ]"
+            output = f"SWAP {amount0_in:.2f} {token0.symbol}, {amount1_in:.2f} {token1.symbol} -> {amount0_out:.2f} {token0.symbol}, {amount1_out:.2f} {token1.symbol} [ <a href=\"{PULSECHAIN_TX_URL}{tx_hash}\" target=\"_blank\">{tx_hash}</a> ]"
         else:
             output = f"SWAP {amount0_in:.2f} {token0.symbol}, {amount1_in:.2f} {token1.symbol} -> {amount0_out:.2f} {token0.symbol}, {amount1_out:.2f} {token1.symbol} [ {tx_hash} ]"
 
@@ -314,7 +315,7 @@ def main():
                         #logger.info(f"\nNew pair or LP event: {log_result}\n")
                         tx = decode_pair(web3, log_result)
                         if(WEB_MODE):
-                            logger.info(f"\nNEW PAIR OR LIQUIDITY EVENT: [ <a href=\"{PULSECHAIN_SCAN_TX_URL}{tx}\" target=\"_blank\">{tx}</a> ]\n")
+                            logger.info(f"\nNEW PAIR OR LIQUIDITY EVENT: [ <a href=\"{PULSECHAIN_TX_URL}{tx}\" target=\"_blank\">{tx}</a> ]\n")
                         else:
                             logger.info(f"\nNEW PAIR OR LIQUIDITY EVENT: TX {tx}\n")
                 elif log_result["event"].event_name == "Swap":
