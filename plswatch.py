@@ -59,7 +59,7 @@ PULSECHAIN_RPC = "https://rpc.pulsechain.com"
 #PULSECHAIN_RPC = PULSECHAIN_GAMMA_RPC
 
 # web configuration
-WEB_MODE = True
+WEB_MODE = False
 PULSECHAIN_TX_URL = "https://otter.pulsechain.com/tx/"
 #PULSECHAIN_TX_URL = "https://scan.pulsechain.com/tx/"
 
